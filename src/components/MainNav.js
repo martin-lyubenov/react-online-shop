@@ -47,6 +47,18 @@ function MainNav(params) {
           </li>
           <li>
             <NavLink
+              to={"/auth"}
+              className={({ isActive }) =>
+                isActive
+                  ? `${classes.active} ${classes["nav-link"]}`
+                  : classes["nav-link"]
+              }
+            >
+              Authentication
+            </NavLink>
+          </li>
+          {/* <li>
+            <NavLink
               to={"/login"}
               className={({ isActive }) =>
                 isActive
@@ -56,13 +68,13 @@ function MainNav(params) {
             >
               Login
             </NavLink>
-          </li>
+          </li> */}
           <li>
             <NavLink to={"/"} className={classes["nav-link"]}>
               Logout
             </NavLink>
           </li>
-          <li>
+          {/* <li>
             <NavLink
               to={"/register"}
               className={({ isActive }) =>
@@ -73,7 +85,7 @@ function MainNav(params) {
             >
               Register
             </NavLink>
-          </li>
+          </li> */}
         </ul>
       </nav>
     </header>
