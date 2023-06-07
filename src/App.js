@@ -5,7 +5,7 @@ import ErrorPage from "./pages/Error";
 import WelcomePage from "./pages/Welcome";
 import MyProductsPage from "./pages/MyProducts";
 import AllProductsPage from "./pages/AllProducts";
-import AuthPage from "./pages/Authentication";
+import AuthPage, {action as authAction} from "./pages/Authentication";
 
 
 const router = createBrowserRouter([
@@ -29,6 +29,7 @@ const router = createBrowserRouter([
       {
         path: "/auth",
         element: <AuthPage />,
+        action: authAction,
       },
     ],
   },
