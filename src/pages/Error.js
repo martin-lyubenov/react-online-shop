@@ -1,10 +1,15 @@
+import { useRouteError } from "react-router-dom";
 import MainNav from "../components/MainNav";
 
 function ErrorPage(params) {
+  const error = useRouteError();
+  console.log(error);
+  let message = error.data.message;
+
   return (
     <>
       <MainNav />
-      <h1>Page not found</h1>
+      <h1>{message}</h1>
     </>
   );
 }
