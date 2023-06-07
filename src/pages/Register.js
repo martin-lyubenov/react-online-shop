@@ -1,7 +1,7 @@
 import Register from "../components/Register";
 
 function RegisterPage(params) {
-  <Register />;
+  return <Register />;
 }
 
 export default RegisterPage;
