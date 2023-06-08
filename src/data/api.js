@@ -20,12 +20,16 @@ async function request(method, url, data) {
     options.body = JSON.stringify(data);
   }
 
-  // const userData = getUserData();
-  // if (userData) {
-  //   const token = userData.sessionToken;
-  //   options.headers["X-Authorization"] = token;
-  // }
+  const userData = getUserData();
+  if (userData) {
+    const token = userData.sessionToken;
+    options.headers["X-Parse-Session-Token"] = token;
+  }
+
+
+
   const response = await fetch(host + url, options);
+  
   return response;
 }
 

@@ -1,5 +1,5 @@
 import { json } from "react-router-dom";
-import AllFruits from "../components/AllFruits";
+import AllFruits from "../components/Fruits/AllFruits";
 import { get } from "../data/api";
 import { endpoints } from "../util/endpoints";
 
@@ -8,16 +8,17 @@ function AllFruitsPage(params) {
 }
 
 export async function loader(params) {
-  try {
     const data = await get(endpoints.allFruits);
 
+    if (data.ok === false) {
+      const error = await data.json();
+      throw json(
+        { message: error.error },
+        { status: error.code }
+      );
+    }
+
     return data;
-  } catch (error) {
-    throw json(
-      { message: "Something went wrong, please reload the page" },
-      { status: 500 }
-    );
-  }
-}
+  } 
 
 export default AllFruitsPage;

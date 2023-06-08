@@ -44,7 +44,7 @@ function MainNav(params) {
             <>
               <li>
                 <NavLink
-                  to={"/my-products"}
+                  to={"/my-fruits"}
                   className={({ isActive }) =>
                     isActive
                       ? `${classes.active} ${classes["nav-link"]}`
@@ -52,7 +52,7 @@ function MainNav(params) {
                   }
                   end
                 >
-                  My Products
+                  My Fruits
                 </NavLink>
               </li>
               <li>

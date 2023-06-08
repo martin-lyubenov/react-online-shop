@@ -3,7 +3,7 @@ import "./App.css";
 import Layout from "./pages/Layout";
 import ErrorPage from "./pages/Error";
 import WelcomePage from "./pages/Welcome";
-import MyProductsPage from "./pages/MyProducts";
+import MyFruitsPage, { loader as myFruitsLoader } from "./pages/MyFruits";
 import AuthPage, { action as authAction } from "./pages/Authentication";
 import { getUserData } from "./util/util";
 import AddFruitPage, { action as addFruitAction } from "./pages/AddFruit";
@@ -22,8 +22,9 @@ const router = createBrowserRouter([
         element: <WelcomePage />,
       },
       {
-        path: "/my-products",
-        element: <MyProductsPage />,
+        path: "/my-fruits",
+        element: <MyFruitsPage />,
+        loader: myFruitsLoader,
       },
       {
         path: "/all-fruits",
