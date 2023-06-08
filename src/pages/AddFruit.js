@@ -30,7 +30,7 @@ export async function action({ request }) {
     // result is not needed but kept just in case, line can be removed
     const result = await response.json();
   
-    return redirect("/all-products");
+    return redirect("/all-fruits");
   
   }
 

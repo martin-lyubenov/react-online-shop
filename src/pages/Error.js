@@ -6,6 +6,10 @@ function ErrorPage(params) {
   console.log(error);
   let message = error.data.message;
 
+  if (error.status === 404) {
+    message = "Page not found";
+  }
+
   return (
     <>
       <MainNav />

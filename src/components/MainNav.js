@@ -1,7 +1,7 @@
 import { NavLink, redirect, useLoaderData } from "react-router-dom";
 
 import classes from "./MainNav.module.css";
-import { clearUserData } from "../util";
+import { clearUserData } from "../util/util";
 
 function MainNav(params) {
   const user = useLoaderData("root");
@@ -30,14 +30,14 @@ function MainNav(params) {
           </li>
           <li>
             <NavLink
-              to={"/all-products"}
+              to={"/all-fruits"}
               className={({ isActive }) =>
                 isActive
                   ? `${classes.active} ${classes["nav-link"]}`
                   : classes["nav-link"]
               }
             >
-              All Products
+              All Fruits
             </NavLink>
           </li>
           {user && (
@@ -53,6 +53,19 @@ function MainNav(params) {
                   end
                 >
                   My Products
+                </NavLink>
+              </li>
+              <li>
+                <NavLink
+                  to={"/add-fruit"}
+                  className={({ isActive }) =>
+                    isActive
+                      ? `${classes.active} ${classes["nav-link"]}`
+                      : classes["nav-link"]
+                  }
+                  end
+                >
+                  Add fruit
                 </NavLink>
               </li>
               <li>

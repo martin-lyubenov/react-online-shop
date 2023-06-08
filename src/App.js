@@ -4,17 +4,17 @@ import Layout from "./pages/Layout";
 import ErrorPage from "./pages/Error";
 import WelcomePage from "./pages/Welcome";
 import MyProductsPage from "./pages/MyProducts";
-import AllProductsPage from "./pages/AllProducts";
-import AuthPage, {action as authAction} from "./pages/Authentication";
-import { getUserData } from "./util";
-
+import AuthPage, { action as authAction } from "./pages/Authentication";
+import { getUserData } from "./util/util";
+import AddFruitPage, { action as addFruitAction } from "./pages/AddFruit";
+import AllFruitsPage, { loader as allFruitsLoader } from "./pages/AllFruits";
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <Layout />,
     errorElement: <ErrorPage />,
-    id: 'root',
+    id: "root",
     loader: getUserData,
     children: [
       {
@@ -26,8 +26,14 @@ const router = createBrowserRouter([
         element: <MyProductsPage />,
       },
       {
-        path: "/all-products",
-        element: <AllProductsPage />,
+        path: "/all-fruits",
+        element: <AllFruitsPage />,
+        loader: allFruitsLoader,
+      },
+      {
+        path: "/add-fruit",
+        element: <AddFruitPage />,
+        action: addFruitAction,
       },
       {
         path: "/auth",

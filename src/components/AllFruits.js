@@ -1,15 +1,22 @@
-import { useLoaderData } from "react-router-dom";
+import { Link, useLoaderData } from "react-router-dom";
 
-const FruitCard = ({fruit}) => {
-    console.log(fruit);
+import classes from "./AllFruits.module.css";
+
+const FruitCard = ({ fruit }) => {
   return (
-    <div class="fruit">
-      <img src={fruit.imageUrl} alt="example1" />
-      <h3 class="title">{fruit.name}</h3>
+    <div className={classes.fruit}>
+
+        <img src={fruit.imageUrl} alt="example1" />
+
+
+      <h3 className={classes.title}>{fruit.name}</h3>
       <p class="description">{fruit.description}</p>
-      <a class="details-btn" href="/dashboard/${fruit._id}">
+      <Link
+        className={classes["details-btn"]}
+        to={`/all-fruits/${fruit.objectId}`}
+      >
         More Info
-      </a>
+      </Link>
     </div>
   );
 };
@@ -22,13 +29,15 @@ function AllFruits(params) {
     allFruits && allFruits.length > 0 ? (
       allFruits.map((fruit) => <FruitCard fruit={fruit} />)
     ) : (
-      <p>No fruits yet</p>
+      <p className={classes.heading}>No fruits yet</p>
     );
 
   return (
     <section>
-      <h1>All Products</h1>
+      <h1 className={classes.heading}>All Products</h1>
+      <article className={classes.container}>
       {content}
+      </article>
     </section>
   );
 }
