@@ -6,6 +6,7 @@ import WelcomePage from "./pages/Welcome";
 import MyProductsPage from "./pages/MyProducts";
 import AllProductsPage from "./pages/AllProducts";
 import AuthPage, {action as authAction} from "./pages/Authentication";
+import { getUserData } from "./util";
 
 
 const router = createBrowserRouter([
@@ -13,6 +14,8 @@ const router = createBrowserRouter([
     path: "/",
     element: <Layout />,
     errorElement: <ErrorPage />,
+    id: 'root',
+    loader: getUserData,
     children: [
       {
         index: true,

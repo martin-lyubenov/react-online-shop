@@ -1,15 +1,13 @@
-import { NavLink, redirect } from "react-router-dom";
+import { NavLink, redirect, useLoaderData } from "react-router-dom";
 
 import classes from "./MainNav.module.css";
-import { clearUserData, getUserData } from "../util";
-import { useState } from "react";
+import { clearUserData } from "../util";
 
 function MainNav(params) {
-  const [user, setUser] = useState(getUserData());
+  const user = useLoaderData("root");
 
   async function logout() {
     clearUserData();
-    setUser(null);
     return redirect("/");
   }
 
@@ -77,6 +75,11 @@ function MainNav(params) {
               >
                 Authentication
               </NavLink>
+            </li>
+          )}
+          {user && (
+            <li>
+              <p className={classes["nav-link"]}>Welcome {user.email}</p>
             </li>
           )}
         </ul>

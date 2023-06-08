@@ -1,6 +1,6 @@
 import { json, redirect } from "react-router-dom";
 import AuthForm from "../components/AuthForm";
-import { get, post } from "../data/api";
+import { post } from "../data/api";
 import { setUserData } from "../util";
 
 const endpoints = {
@@ -21,7 +21,6 @@ export async function action({ request }) {
   }
 
   const formData = await request.formData();
-
   const { email, password, rePassword } = Object.fromEntries(
     [...formData].map(([k, v]) => [k, v.trim()])
   );
@@ -38,7 +37,6 @@ export async function action({ request }) {
       username: email,
       password,
     });
-    console.log(response);
   } else {
     response = await post(endpoints.register, {
       username: email,
