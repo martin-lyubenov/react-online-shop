@@ -2,7 +2,6 @@ import { json, redirect } from "react-router-dom";
 import CreateUpdateForm from "../components/Forms/CreateUpdateForm";
 import { post } from "../data/api";
 import { endpoints } from "../util/endpoints";
-import { getUserData } from "../util/util";
 import { formActions } from "../util/fromActions";
 
 function AddFruitPage(params) {
