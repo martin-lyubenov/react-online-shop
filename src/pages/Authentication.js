@@ -1,5 +1,5 @@
 import { json, redirect } from "react-router-dom";
-import AuthForm from "../components/AuthForm";
+import AuthForm from "../components/Forms/AuthForm";
 import { post } from "../data/api";
 import { setUserData } from "../util/util";
 import { endpoints } from "../util/endpoints";

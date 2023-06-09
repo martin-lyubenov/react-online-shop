@@ -8,6 +8,7 @@ import AuthPage, { action as authAction } from "./pages/Authentication";
 import { getUserData } from "./util/util";
 import AddFruitPage, { action as addFruitAction } from "./pages/AddFruit";
 import AllFruitsPage, { loader as allFruitsLoader } from "./pages/AllFruits";
+import DetailsPage, {loader as detailsLoader} from "./pages/Details";
 
 const router = createBrowserRouter([
   {
@@ -40,6 +41,11 @@ const router = createBrowserRouter([
         path: "/auth",
         element: <AuthPage />,
         action: authAction,
+      },
+      {
+        path: "/all-fruits/:fruitId",
+        element: <DetailsPage />,
+        loader: detailsLoader,
       },
     ],
   },

@@ -1,5 +1,5 @@
 import { json, redirect } from "react-router-dom";
-import CreateForm from "../components/CreateForm";
+import CreateForm from "../components/Forms/CreateForm";
 import { post } from "../data/api";
 import { endpoints } from "../util/endpoints";
 import { getUserData } from "../util/util";
