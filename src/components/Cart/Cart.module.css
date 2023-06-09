@@ -1,0 +1,42 @@
+.cart {
+  position: fixed;
+  top: 0px;
+  right: 0px;
+  width: 80%;
+  height: 95%;
+  background-color: rgb(27, 26, 32);
+  box-sizing: border-box;
+  z-index: 99;
+  transition: right 0.2s ease 0s;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.cart h2 {
+  font-size: 1.25rem;
+  margin: 0.5rem 0;
+}
+
+.cart ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+
+@media (min-width: 768px) {
+  .cart {
+      width: 50%;
+  }
+
+}
+
+@media (min-width: 1024px) {
+  .cart {
+      width: 30%;
+      height: 100%;
+  }
+
+}
