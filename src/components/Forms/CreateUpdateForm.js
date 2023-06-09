@@ -1,17 +1,20 @@
-import { Form } from "react-router-dom";
+import { Form, useLoaderData } from "react-router-dom";
 import classes from "./CreateForm.module.css";
 
-function CreateForm(params) {
+function CreateUpdateForm({ method }) {
+  const fruit = useLoaderData();
+
   return (
     <section>
       <div className={classes.form}>
         <h2>Add Fruit</h2>
-        <Form method="POST">
+        <Form method={method}>
           <input
             type="text"
             name="name"
             id="name"
             placeholder="Fruit Name"
+            defaultValue={fruit ? fruit.name : ""}
             required
           />
           <input
@@ -19,6 +22,7 @@ function CreateForm(params) {
             name="imageUrl"
             id="Fruit-image"
             placeholder="Fruit Image"
+            defaultValue={fruit ? fruit.imageUrl : ""}
             required
           />
           <textarea
@@ -27,6 +31,7 @@ function CreateForm(params) {
             placeholder="Description"
             rows="10"
             cols="50"
+            defaultValue={fruit ? fruit.description : ""}
             required
           />
           <textarea
@@ -35,6 +40,7 @@ function CreateForm(params) {
             placeholder="Nutrition"
             rows="10"
             cols="50"
+            defaultValue={fruit ? fruit.nutrition : ""}
             required
           />
           <button type="submit">Add Fruit</button>
@@ -44,4 +50,4 @@ function CreateForm(params) {
   );
 }
 
-export default CreateForm;
+export default CreateUpdateForm;

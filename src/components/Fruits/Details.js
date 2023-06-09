@@ -1,4 +1,4 @@
-import { useLoaderData, useNavigate } from "react-router-dom";
+import { Link, useLoaderData, useNavigate } from "react-router-dom";
 import { del } from "../../data/api";
 import { endpoints } from "../../util/endpoints";
 
@@ -37,7 +37,7 @@ function Details() {
 
           {fruit.isCreator ? (
             <div className={classes["action-buttons"]}>
-              <a href={`//${fruit._id}/edit`}>Edit</a>
+              <Link to={`/all-fruits/${fruit.objectId}/edit`}>Edit</Link>
               <button onClick={deleteAction}>Delete</button>
             </div>
           ) : null}

@@ -8,7 +8,11 @@ import AuthPage, { action as authAction } from "./pages/Authentication";
 import { getUserData } from "./util/util";
 import AddFruitPage, { action as addFruitAction } from "./pages/AddFruit";
 import AllFruitsPage, { loader as allFruitsLoader } from "./pages/AllFruits";
-import DetailsPage, {loader as detailsLoader} from "./pages/Details";
+import DetailsPage, { loader as detailsLoader } from "./pages/Details";
+import EditPage, {
+  loader as editLoader,
+  action as editAction,
+} from "./pages/Edit";
 
 const router = createBrowserRouter([
   {
@@ -44,8 +48,19 @@ const router = createBrowserRouter([
       },
       {
         path: "/all-fruits/:fruitId",
-        element: <DetailsPage />,
-        loader: detailsLoader,
+        children: [
+          {
+            index: true,
+            element: <DetailsPage />,
+            loader: detailsLoader,
+          },
+          {
+            path: "/all-fruits/:fruitId/edit",
+            element: <EditPage />,
+            loader: editLoader,
+            action: editAction,
+          },
+        ],
       },
     ],
   },

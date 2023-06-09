@@ -1,8 +1,4 @@
-import {
-  NavLink,
-  useLoaderData,
-  useNavigate,
-} from "react-router-dom";
+import { NavLink, useLoaderData, useNavigate } from "react-router-dom";
 
 import classes from "./MainNav.module.css";
 import { clearUserData } from "../util/util";
@@ -41,6 +37,7 @@ function MainNav(params) {
                   ? `${classes.active} ${classes["nav-link"]}`
                   : classes["nav-link"]
               }
+              end
             >
               All Fruits
             </NavLink>
