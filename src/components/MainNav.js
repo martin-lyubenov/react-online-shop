@@ -1,14 +1,19 @@
-import { NavLink, redirect, useLoaderData } from "react-router-dom";
+import {
+  NavLink,
+  useLoaderData,
+  useNavigate,
+} from "react-router-dom";
 
 import classes from "./MainNav.module.css";
 import { clearUserData } from "../util/util";
 
 function MainNav(params) {
   const user = useLoaderData("root");
+  const navigate = useNavigate();
 
   async function logout() {
     clearUserData();
-    return redirect("/");
+    return navigate("/");
   }
 
   return (
