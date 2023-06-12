@@ -22,6 +22,4 @@ function AllFruits(params) {
   );
 }
 
-//  ?where={"imageUrl": "A string", "name": "A string", "nutrition": "A string", "description": "A string" }
-
 export default AllFruits;

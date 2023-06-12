@@ -4,7 +4,7 @@ export async function formActions(request, httpReq, url) {
   const formData = await request.formData();
 
   // extracting data from the Create Form and trimming the date to avoid any unwanted spaces
-  const { name, imageUrl, description, nutrition } = Object.fromEntries(
+  const { name, imageUrl, description, nutrition, price } = Object.fromEntries(
     [...formData].map(([k, v]) => [k, v.trim()])
   );
 
@@ -20,6 +20,7 @@ export async function formActions(request, httpReq, url) {
     imageUrl,
     description,
     nutrition,
+    price,
     owner,
   });
 

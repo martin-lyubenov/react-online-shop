@@ -12,20 +12,19 @@ const itemsSlice = createSlice({
     },
     addItem(state, action) {
       state.totalQuantity++;
+      state.totalCost += Number(action.payload.price);
 
       const index = state.items.findIndex(
-        (item) => item.id === action.payload.id
+        (item) => item.objectId === action.payload.objectId
       );
       const existingItem = state.items[index];
 
       if (existingItem) {
-        existingItem.quantity++;
-        existingItem.total += existingItem.price;
+        existingItem.qty++;
       } else {
-        const newItem = action.payload;
-        newItem.quantity = 1;
-        newItem.total = newItem.price;
-        state.items.push(action.payload);
+        const newItem = {...action.payload};
+        newItem.qty = 1;
+        state.items.push(newItem);
       }
     },
     increaseQty(state, action) {
@@ -102,10 +101,12 @@ export const fetchCart = (counter) => {
 
     try {
       const cart = await getRequest();
-      dispatch(itemsActions.replaceCart({
-        items: cart.items || [],
-        totalQuantity: cart.totalQuantity,
-      }));
+      dispatch(
+        itemsActions.replaceCart({
+          items: cart.items || [],
+          totalQuantity: cart.totalQuantity,
+        })
+      );
       return cart;
     } catch (error) {
       alert("Ooops, something went wrong");
