@@ -3,10 +3,18 @@ import { del } from "../../data/api";
 import { endpoints } from "../../util/endpoints";
 
 import classes from "./Details.module.css";
+import { useDispatch } from "react-redux";
+import { itemsActions } from "../../store/item";
 
 function Details() {
   const fruit = useLoaderData();
   const navigate = useNavigate();
+
+  const dispatch = useDispatch();
+
+  const addToCatHandler = () => {
+    dispatch(itemsActions.addItem(fruit));
+  };
 
   async function deleteAction() {
     const choise = window.confirm(
@@ -31,9 +39,10 @@ function Details() {
         <div className={classes["info-wrapper"]}>
           <div className={classes["details-description"]}>
             <p>{fruit.description}</p>
-            <p className={classes["nutrition"]}>Nutrition</p>
-            <p className={classes["details-nutrition"]}>{fruit.nutrition}</p>
+            <p className={classes["nutrition"]}>{fruit.nutrition}</p>
+            <p className={classes["price"]}>{fruit.price}</p>
           </div>
+          <button onClick={addToCatHandler}>Add to Cart</button>
 
           {fruit.isCreator ? (
             <div className={classes["action-buttons"]}>

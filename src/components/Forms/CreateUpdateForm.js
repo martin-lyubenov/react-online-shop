@@ -1,5 +1,5 @@
 import { Form, useLoaderData } from "react-router-dom";
-import classes from "./CreateForm.module.css";
+import classes from "./CreateUpdateForm.module.css"
 
 function CreateUpdateForm({ method }) {
   const fruit = useLoaderData();
@@ -7,7 +7,7 @@ function CreateUpdateForm({ method }) {
   return (
     <section>
       <div className={classes.form}>
-        <h2>Add Fruit</h2>
+        <h2>{fruit ? "Edit" : "Add"} Fruit</h2>
         <Form method={method}>
           <input
             type="text"
@@ -22,6 +22,15 @@ function CreateUpdateForm({ method }) {
             name="imageUrl"
             id="Fruit-image"
             placeholder="Fruit Image"
+            defaultValue={fruit ? fruit.imageUrl : ""}
+            required
+          />
+                 <input
+            type="number"
+            step={0.01}
+            name="price"
+            id="price"
+            placeholder="price"
             defaultValue={fruit ? fruit.imageUrl : ""}
             required
           />
@@ -43,7 +52,7 @@ function CreateUpdateForm({ method }) {
             defaultValue={fruit ? fruit.nutrition : ""}
             required
           />
-          <button type="submit">Add Fruit</button>
+          <button type="submit">{fruit ? "Edit" : "Add"} Fruit</button>
         </Form>
       </div>
     </section>

@@ -4,6 +4,7 @@ Add option to add products
 - Add items to shopping cart
 - Save shopping cart
 - search? ( maybe by title?)
+- clear shopping cart when you logout - when loading the cart it should be an authorize request?
 
 TODO:
 Creaate class Cart in Back4app to hold the items, it should be connecetd to the user, how?
