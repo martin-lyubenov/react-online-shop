@@ -22,35 +22,35 @@ const itemsSlice = createSlice({
       if (existingItem) {
         existingItem.qty++;
       } else {
-        const newItem = {...action.payload};
+        const newItem = { ...action.payload };
         newItem.qty = 1;
         state.items.push(newItem);
       }
     },
     increaseQty(state, action) {
       state.totalQuantity++;
+      state.totalCost += Number(action.payload.price);
 
       const index = state.items.findIndex(
-        (item) => item.id === action.payload.id
+        (item) => item.objectId === action.payload.objectId
       );
       const existingItem = state.items[index];
-      existingItem.quantity++;
-      existingItem.total += existingItem.price;
+      existingItem.qty++;
     },
 
     decreaseQty(state, action) {
       state.totalQuantity--;
+      state.totalCost -= Number(action.payload.price);
 
       const index = state.items.findIndex(
         (item) => item.id === action.payload.id
       );
       const existingItem = state.items[index];
 
-      if (existingItem.quantity <= 1) {
+      if (existingItem.qty <= 1) {
         state.items.splice(index, 1);
       } else {
-        existingItem.quantity--;
-        existingItem.total -= existingItem.price;
+        existingItem.qty--;
       }
     },
   },

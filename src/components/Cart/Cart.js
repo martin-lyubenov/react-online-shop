@@ -3,16 +3,18 @@ import classes from "./Cart.module.css";
 import CartItem from "./CartItem";
 
 const Cart = (props) => {
-  
   const items = useSelector((state) => state.items);
-  const processedPrice = items.totalCost.toFixed(2);
+  const processedPrice = Math.abs(items.totalCost).toFixed(2);
+  const totalQty = items.totalQuantity;
 
   let content = <p>No items</p>;
 
   if (items.items.length > 0) {
     content = (
       <ul>
-        {items.items.map((item) => <CartItem key={item.objectId} item={item} />)}
+        {items.items.map((item) => (
+          <CartItem key={item.objectId} item={item} />
+        ))}
       </ul>
     );
   }
@@ -21,7 +23,8 @@ const Cart = (props) => {
     <div className={classes.cart}>
       <h2>Your Shopping Cart</h2>
       {content}
-      {processedPrice}
+      <p>Total price: {processedPrice}</p>
+      <p>Total qty: {totalQty}</p>
     </div>
   );
 };

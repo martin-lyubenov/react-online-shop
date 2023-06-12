@@ -4,7 +4,6 @@ import { useDispatch } from "react-redux";
 
 const CartItem = ({ item }) => {
   const { name, nutrition, price, objectId, qty } = item;
-  console.log(item);
   const processedPrice = Number(price).toFixed(2)
 
   const dispatch = useDispatch();
