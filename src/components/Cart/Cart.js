@@ -4,14 +4,15 @@ import CartItem from "./CartItem";
 
 const Cart = (props) => {
   
-  const items = useSelector((state) => state.items.items);
+  const items = useSelector((state) => state.items);
+  const processedPrice = items.totalCost.toFixed(2);
 
   let content = <p>No items</p>;
 
-  if (items.length > 0) {
+  if (items.items.length > 0) {
     content = (
       <ul>
-        {items.map((item) => <CartItem key={item.id} item={item} />)}
+        {items.items.map((item) => <CartItem key={item.objectId} item={item} />)}
       </ul>
     );
   }
@@ -20,6 +21,7 @@ const Cart = (props) => {
     <div className={classes.cart}>
       <h2>Your Shopping Cart</h2>
       {content}
+      {processedPrice}
     </div>
   );
 };
