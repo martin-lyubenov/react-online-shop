@@ -10,8 +10,8 @@ export async function createCart(result) {
 
   const responseCart = await post(endpoints.createCart, {
     cartItems: [],
-    totalQuantity: "0",
-    totalPrice: "0",
+    totalQuantity: 0,
+    totalCost: 0,
     owner,
   });
 

@@ -8,7 +8,7 @@ import { cartToggleActions } from "../../store/cartToggle";
 function CartVisibilityButton({ isShown }) {
   const dispatch = useDispatch();
 
-  const itemsAmount = useSelector((state) => state.items.totalQuantity);
+  let itemsAmount = useSelector((state) => state.items.totalQuantity);
 
   const myCartHandler = () => {
     dispatch(cartToggleActions.toggleVisibility());

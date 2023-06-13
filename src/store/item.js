@@ -1,4 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { get } from "../data/api";
+import { endpoints } from "../util/endpoints";
 
 const initialState = { items: [], totalQuantity: 0, totalCost: 0 };
 
@@ -8,6 +10,7 @@ const itemsSlice = createSlice({
   reducers: {
     replaceCart(state, aciton) {
       state.totalQuantity = aciton.payload.totalQuantity;
+      state.totalCost = aciton.payload.totalCost;
       state.items = aciton.payload.items;
     },
     addItem(state, action) {
@@ -43,7 +46,7 @@ const itemsSlice = createSlice({
       state.totalCost -= Number(action.payload.price);
 
       const index = state.items.findIndex(
-        (item) => item.id === action.payload.id
+        (item) => item.objectId === action.payload.objectId
       );
       const existingItem = state.items[index];
 
@@ -83,12 +86,10 @@ export const sendCartData = ({ items, totalQuantity }) => {
   };
 };
 
-export const fetchCart = (counter) => {
+export const fetchCart = (userId) => {
   return async (dispatch) => {
     const getRequest = async () => {
-      const response = await fetch(
-        "https://react-http-test-fcec6-default-rtdb.europe-west1.firebasedatabase.app/cart.json"
-      );
+      const response = await get(endpoints.byOwnerId(userId))
 
       if (response.ok === false) {
         throw new Error("Something went wrong");
@@ -100,16 +101,19 @@ export const fetchCart = (counter) => {
     };
 
     try {
-      const cart = await getRequest();
+      const cartData = await getRequest();
+      const items = cartData.results[0].cartItems;
+      const totalQuantity = cartData.results[0].totalQuantity;
+      const totalCost = cartData.results[0].totalCost;
       dispatch(
         itemsActions.replaceCart({
-          items: cart.items || [],
-          totalQuantity: cart.totalQuantity,
+          items,
+          totalQuantity,
+          totalCost,
         })
       );
-      return cart;
     } catch (error) {
-      alert("Ooops, something went wrong");
+      alert("Fetch cart went wrong");
     }
   };
 };
