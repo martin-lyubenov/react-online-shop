@@ -5,7 +5,7 @@ import Cart from "./Cart/Cart";
 import CartVisibilityButton from "./Cart/CartVisibilityButton";
 import { useSelector } from "react-redux";
 import store from "../store";
-import { userActions } from "../store/userSlice";
+import { userActions } from "../store/user";
 
 function MainNav(params) {
   const user = useSelector(state => state.user.user)

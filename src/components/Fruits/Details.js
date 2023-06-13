@@ -3,12 +3,16 @@ import { del } from "../../data/api";
 import { endpoints } from "../../util/endpoints";
 
 import classes from "./Details.module.css";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { itemsActions } from "../../store/item";
 
 function Details() {
-  const fruit = useLoaderData();
   const navigate = useNavigate();
+  const fruit = useLoaderData();
+  const user = useSelector((state) => state.user.user);
+  if (user) {
+    fruit.isCreator = user.objectId === fruit.owner.objectId;
+  }
 
   const dispatch = useDispatch();
 
@@ -27,7 +31,6 @@ function Details() {
     }
   }
 
-
   return (
     <section>
       <div className={classes["details-wrapper"]}>
@@ -43,14 +46,14 @@ function Details() {
             <p className={classes["nutrition"]}>{fruit.nutrition}</p>
             <p className={classes["price"]}>{fruit.price}</p>
           </div>
-          <button onClick={addToCatHandler}>Add to Cart</button>
+          {user && <button onClick={addToCatHandler}>Add to Cart</button>}
 
-          {fruit.isCreator ? (
+          {fruit.isCreator === true && (
             <div className={classes["action-buttons"]}>
               <Link to={`/all-fruits/${fruit.objectId}/edit`}>Edit</Link>
               <button onClick={deleteAction}>Delete</button>
             </div>
-          ) : null}
+          )}
         </div>
       </div>
     </section>

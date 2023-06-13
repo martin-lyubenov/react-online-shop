@@ -5,9 +5,7 @@ import { post } from "../data/api";
 import { endpoints } from "../util/endpoints";
 import { createCart } from "../util/createCart";
 import store from "../store";
-import { userActions } from "../store/userSlice";
-
-
+import { userActions } from "../store/user";
 
 function AuthenticationPage(params) {
   return <AuthForm />;

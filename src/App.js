@@ -15,7 +15,7 @@ import EditPage, {
 } from "./pages/Edit";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
-import { fetchCart, sendCartData } from "./store/item";
+import { fetchCart, itemsActions, sendCartData } from "./store/item";
 
 const router = createBrowserRouter([
   {
@@ -69,36 +69,52 @@ const router = createBrowserRouter([
   },
 ]);
 
-let isInitialized = true;
-
 function App() {
   const dispatch = useDispatch();
-  const user = useSelector(state => state.user.user)
+  const user = useSelector((state) => state.user.user);
+  const cartId = useSelector((state) => state.user.cartId);
 
   const cart = useSelector((state) => {
     return {
-      items: state.items.items,
+      cartItems: state.items.items,
       totalQuantity: state.items.totalQuantity,
+      totalCost: state.items.totalCost,
       hasChanged: state.items.hasChanged,
     };
   });
+
+  // clears cart when the user logs out
+
+  useEffect(() => {
+    if (!user) {
+      dispatch(
+        itemsActions.replaceCart({
+          items: [],
+          totalQuantity: 0,
+          totalCost: 0,
+          hasChanged: false,
+        })
+      );
+    }
+  }, [dispatch, user]);
+
+  // populates cart when a user logs in
 
   useEffect(() => {
     if (user) {
       dispatch(fetchCart(user.objectId));
     }
-  }, [dispatch,user]);
+  }, [dispatch, user]);
 
-  // useEffect(() => {
-  //   if (isInitialized) {
-  //     isInitialized = false;
-  //     return;
-  //   }
-
-  //   if (cart.hasChanged) {
-  //     dispatch(sendCartData(cart));
-  //   }
-  // }, [cart, dispatch]);
+  // send updated cart to backend so it can be loaded in the future
+  useEffect(() => {
+    if (user) {
+      console.log(cart);
+      if (cart.hasChanged) {
+        dispatch(sendCartData(cart, cartId));
+      }
+    }
+  }, [cart, dispatch, cartId, user]);
 
   return <RouterProvider router={router} />;
 }
