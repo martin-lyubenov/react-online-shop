@@ -1,4 +1,3 @@
-import { json } from "react-router-dom";
 import { clearUserData, getUserData } from "../util/util";
 
 // info about the host, appId and apiKey saved
@@ -7,6 +6,7 @@ const appId = "69QPUT0iQyomfQd45MQGypaiGPmdQtpsSQRDIJzC";
 const apiKey = "QLKxV9pssizMglLvBAjkRbwAb8gFYYMKmf20AUdI";
 
 async function request(method, url, data) {
+
   const options = {
     method: method,
     headers: {

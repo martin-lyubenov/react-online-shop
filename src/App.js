@@ -13,6 +13,9 @@ import EditPage, {
   loader as editLoader,
   action as editAction,
 } from "./pages/Edit";
+import { useDispatch, useSelector } from "react-redux";
+import { useEffect } from "react";
+import { fetchCart, sendCartData } from "./store/item";
 
 const router = createBrowserRouter([
   {
@@ -66,7 +69,34 @@ const router = createBrowserRouter([
   },
 ]);
 
+let isInitialized = true;
+
 function App() {
+  const dispatch = useDispatch();
+
+  const cart = useSelector((state) => {
+    return {
+      items: state.items.items,
+      totalQuantity: state.items.totalQuantity,
+      hasChanged: state.items.hasChanged,
+    };
+  });
+
+  // useEffect(() => {
+  //   dispatch(fetchCart());
+  // }, [dispatch]);
+
+  // useEffect(() => {
+  //   if (isInitialized) {
+  //     isInitialized = false;
+  //     return;
+  //   }
+
+  //   if (cart.hasChanged) {
+  //     dispatch(sendCartData(cart));
+  //   }
+  // }, [cart, dispatch]);
+
   return <RouterProvider router={router} />;
 }
 

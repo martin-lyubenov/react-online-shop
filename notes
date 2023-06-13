@@ -1,9 +1,7 @@
 Add option to add products
 
-- Shopping cart?
-- Add items to shopping cart
-- Save shopping cart
-- search? ( maybe by title?)
+- Save shopping cart to backend
+- search? ( maybe by title?, can be in the All products and my products pages)
 - clear shopping cart when you logout - when loading the cart it should be an authorize request?
 
 TODO:

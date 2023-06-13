@@ -3,6 +3,7 @@ import AuthForm from "../components/Forms/AuthForm";
 import { post } from "../data/api";
 import { setUserData } from "../util/util";
 import { endpoints } from "../util/endpoints";
+import { createCart } from "../util/createCart";
 
 function AuthenticationPage(params) {
   return <AuthForm />;
@@ -12,7 +13,7 @@ export async function action({ request }) {
   const searchParams = new URL(request.url).searchParams;
   const mode = searchParams.get("mode") || "login";
 
-  // throwing an error if the user has managed to change the mode manually
+  // throws an error if the user has managed to change the mode manually
   if (mode !== "login" && mode !== "register") {
     throw json({ message: "Unsupported mode." }, { status: 422 });
   }
@@ -56,7 +57,11 @@ export async function action({ request }) {
 
   const result = await response.json();
 
-  // storing the logged in user details (needed for the authorized session) in the local storage 
+  if (mode === "register") {
+    createCart(result);
+  }
+
+  // storing the logged in user details (needed for the authorized session) in the local storage
   setUserData({
     email,
     objectId: result.objectId,

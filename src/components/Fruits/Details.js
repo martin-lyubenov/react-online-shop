@@ -1,10 +1,11 @@
 import { Link, useLoaderData, useNavigate } from "react-router-dom";
-import { del } from "../../data/api";
+import { del, get } from "../../data/api";
 import { endpoints } from "../../util/endpoints";
 
 import classes from "./Details.module.css";
 import { useDispatch } from "react-redux";
 import { itemsActions } from "../../store/item";
+import { getUserData } from "../../util/util";
 
 function Details() {
   const fruit = useLoaderData();
@@ -26,6 +27,7 @@ function Details() {
       navigate("/all-fruits");
     }
   }
+
 
   return (
     <section>

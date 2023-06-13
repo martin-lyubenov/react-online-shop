@@ -11,6 +11,7 @@ export async function loader({params}) {
   const fruitId = params.fruitId;
   const user = getUserData();
 
+  // TODO add check for bad requests
   const response = await get(endpoints.byFruitId(fruitId));
 
   const data = await response.json();

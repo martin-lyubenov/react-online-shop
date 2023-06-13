@@ -18,6 +18,7 @@ const Cart = (props) => {
       </ul>
     );
   }
+  
 
   return (
     <div className={classes.cart}>

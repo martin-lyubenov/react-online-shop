@@ -12,6 +12,10 @@ function MyFruitsPage(params) {
 export async function loader(params) {
   const data = await get(endpoints.allFruits);
 
+  // TODO check if the server can return a sorted response  
+  // -data-urlencode 'order=likes' \
+  // https://parseapi.back4app.com/classes/Post
+
   if (data.ok === false) {
     const error = await data.json();
     throw json(
