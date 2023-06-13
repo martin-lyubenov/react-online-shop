@@ -1,8 +1,14 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { get } from "../data/api";
+import { get, put } from "../data/api";
 import { endpoints } from "../util/endpoints";
+import { userActions } from "./user";
 
-const initialState = { items: [], totalQuantity: 0, totalCost: 0 };
+const initialState = {
+  items: [],
+  totalQuantity: 0,
+  totalCost: 0,
+  hasChanged: false,
+};
 
 const itemsSlice = createSlice({
   name: "items",
@@ -14,6 +20,7 @@ const itemsSlice = createSlice({
       state.items = aciton.payload.items;
     },
     addItem(state, action) {
+      state.hasChanged = true;
       state.totalQuantity++;
       state.totalCost += Number(action.payload.price);
 
@@ -31,6 +38,7 @@ const itemsSlice = createSlice({
       }
     },
     increaseQty(state, action) {
+      state.hasChanged = true;
       state.totalQuantity++;
       state.totalCost += Number(action.payload.price);
 
@@ -42,8 +50,11 @@ const itemsSlice = createSlice({
     },
 
     decreaseQty(state, action) {
+      state.hasChanged = true;
       state.totalQuantity--;
       state.totalCost -= Number(action.payload.price);
+
+      // TODO total cost can be negative??
 
       const index = state.items.findIndex(
         (item) => item.objectId === action.payload.objectId
@@ -61,27 +72,30 @@ const itemsSlice = createSlice({
 
 export const itemsActions = itemsSlice.actions;
 
-export const sendCartData = ({ items, totalQuantity }) => {
+// Thunks
+
+export const sendCartData = (
+  { cartItems, totalQuantity, totalCost },
+  cartId
+) => {
   return async (dispatch) => {
     const sentRequest = async () => {
-      const response = await fetch(
-        "https://react-http-test-fcec6-default-rtdb.europe-west1.firebasedatabase.app/cart.json",
-        {
-          method: "PUT",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ items, totalQuantity }),
-        }
-      );
+      const response = await put(endpoints.updateCart(cartId), {
+        cartItems,
+        totalQuantity,
+        totalCost,
+      });
 
       if (response.ok === false) {
         throw new Error("Something went wrong");
       }
+      return response;
     };
 
     try {
       await sentRequest();
     } catch (error) {
-      alert("Ooops, something went wrong");
+      alert("send data failed");
     }
   };
 };
@@ -89,7 +103,7 @@ export const sendCartData = ({ items, totalQuantity }) => {
 export const fetchCart = (userId) => {
   return async (dispatch) => {
     const getRequest = async () => {
-      const response = await get(endpoints.byOwnerId(userId))
+      const response = await get(endpoints.byOwnerId(userId));
 
       if (response.ok === false) {
         throw new Error("Something went wrong");
@@ -102,6 +116,9 @@ export const fetchCart = (userId) => {
 
     try {
       const cartData = await getRequest();
+
+      dispatch(userActions.setCartId(cartData.results[0].objectId));
+
       const items = cartData.results[0].cartItems;
       const totalQuantity = cartData.results[0].totalQuantity;
       const totalCost = cartData.results[0].totalCost;
