@@ -8,6 +8,5 @@ export const endpoints = {
   byFruitId: (fruitId) => `/classes/AllFruits?${filter("objectId", fruitId)}`,
   createCart: "/classes/Cart",
   byOwnerId: (ownerId) => `/classes/Cart?${filterByOwner(ownerId)}`,
+  updateCart: (cartId) => `/classes/Cart/${cartId}`
 };
-
-// TODO - server

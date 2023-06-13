@@ -1,6 +1,7 @@
 import { useRouteError } from "react-router-dom";
 import MainNav from "../components/MainNav";
-import { clearUserData } from "../util/util";
+import store from "../store";
+import { userActions } from "../store/userSlice";
 
 function ErrorPage(params) {
   const error = useRouteError();
@@ -11,10 +12,10 @@ function ErrorPage(params) {
   }
 
   if (error.status === 209) {
-    clearUserData();
+    store.dispatch(userActions.clearUserData());
   }
 
-// TODO Main nav does not update when there is an error??
+  // TODO Main nav does not update when there is an error??
 
   return (
     <>

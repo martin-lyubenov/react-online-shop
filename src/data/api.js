@@ -1,4 +1,4 @@
-import { clearUserData, getUserData } from "../util/util";
+import {  getUserData } from "../util/util";
 
 // info about the host, appId and apiKey saved
 const host = "https://parseapi.back4app.com";

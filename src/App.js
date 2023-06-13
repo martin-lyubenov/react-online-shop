@@ -14,7 +14,7 @@ import EditPage, {
   action as editAction,
 } from "./pages/Edit";
 import { useDispatch, useSelector } from "react-redux";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { fetchCart, sendCartData } from "./store/item";
 
 const router = createBrowserRouter([
@@ -73,6 +73,7 @@ let isInitialized = true;
 
 function App() {
   const dispatch = useDispatch();
+  const user = useSelector(state => state.user.user)
 
   const cart = useSelector((state) => {
     return {
@@ -82,9 +83,11 @@ function App() {
     };
   });
 
-  // useEffect(() => {
-  //   dispatch(fetchCart());
-  // }, [dispatch]);
+  useEffect(() => {
+    if (user) {
+      dispatch(fetchCart(user.objectId));
+    }
+  }, [dispatch,user]);
 
   // useEffect(() => {
   //   if (isInitialized) {

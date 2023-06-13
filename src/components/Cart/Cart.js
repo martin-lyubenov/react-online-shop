@@ -7,6 +7,7 @@ const Cart = (props) => {
   const processedPrice = Math.abs(items.totalCost).toFixed(2);
   const totalQty = items.totalQuantity;
 
+
   let content = <p>No items</p>;
 
   if (items.items.length > 0) {
