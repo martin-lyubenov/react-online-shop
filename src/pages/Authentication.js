@@ -1,9 +1,13 @@
 import { json, redirect } from "react-router-dom";
 import AuthForm from "../components/Forms/AuthForm";
 import { post } from "../data/api";
-import { setUserData } from "../util/util";
+// import { setUserData } from "../util/util";
 import { endpoints } from "../util/endpoints";
 import { createCart } from "../util/createCart";
+import store from "../store";
+import { userActions } from "../store/userSlice";
+
+
 
 function AuthenticationPage(params) {
   return <AuthForm />;
@@ -61,12 +65,22 @@ export async function action({ request }) {
     createCart(result);
   }
 
+  store.dispatch(
+    userActions.setUserData({
+      email,
+      objectId: result.objectId,
+      sessionToken: result.sessionToken,
+    })
+  );
+
+  // TODO, remove code if new algorithm works properly
+
   // storing the logged in user details (needed for the authorized session) in the local storage
-  setUserData({
-    email,
-    objectId: result.objectId,
-    sessionToken: result.sessionToken,
-  });
+  // setUserData({
+  //   email,
+  //   objectId: result.objectId,
+  //   sessionToken: result.sessionToken,
+  // });
 
   return redirect("/");
 }

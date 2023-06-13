@@ -1,18 +1,19 @@
-import { NavLink, useLoaderData, useNavigate } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 
 import classes from "./MainNav.module.css";
-import { clearUserData } from "../util/util";
 import Cart from "./Cart/Cart";
 import CartVisibilityButton from "./Cart/CartVisibilityButton";
 import { useSelector } from "react-redux";
+import store from "../store";
+import { userActions } from "../store/userSlice";
 
 function MainNav(params) {
-  const user = useLoaderData("root");
+  const user = useSelector(state => state.user.user)
   const navigate = useNavigate();
   const isShown = useSelector((state) => state.cartToggle.isShown);
 
   async function logout() {
-    clearUserData();
+    store.dispatch(userActions.clearUserData())
     return navigate("/");
   }
 
