@@ -1,14 +1,13 @@
 Add option to add products
 
-- Save shopping cart to backend
 - search? ( maybe by title?, can be in the All products and my products pages)
 - clear shopping cart when you logout - when loading the cart it should be an authorize request?
 
 TODO:
-Creaate class Cart in Back4app to hold the items, it should be connecetd to the user, how?
 Change the whole look tobe for memes
 structure of meme card, info to be send to backend
 Add banner - form me on github ( to be done last)
+testing :(
 
 
 
