@@ -14,8 +14,9 @@ import EditPage, {
   action as editAction,
 } from "./pages/Edit";
 import { useDispatch, useSelector } from "react-redux";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { fetchCart, itemsActions, sendCartData } from "./store/item";
+// import SearchLayoutPage, { action as actionSearch } from "./pages/SearchLayout";
 
 const router = createBrowserRouter([
   {
@@ -109,7 +110,6 @@ function App() {
   // send updated cart to backend so it can be loaded in the future
   useEffect(() => {
     if (user) {
-      console.log(cart);
       if (cart.hasChanged) {
         dispatch(sendCartData(cart, cartId));
       }

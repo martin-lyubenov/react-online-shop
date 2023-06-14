@@ -71,15 +71,6 @@ export async function action({ request }) {
     })
   );
 
-  // TODO, remove code if new algorithm works properly
-
-  // storing the logged in user details (needed for the authorized session) in the local storage
-  // setUserData({
-  //   email,
-  //   objectId: result.objectId,
-  //   sessionToken: result.sessionToken,
-  // });
-
   return redirect("/");
 }
 
