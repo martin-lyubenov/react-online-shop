@@ -4,21 +4,22 @@ import { get } from "../data/api";
 import { endpoints } from "../util/endpoints";
 
 function AllFruitsPage(params) {
-  return <AllFruits />;
+  return (
+    <>
+      <AllFruits />
+    </>
+  );
 }
 
 export async function loader(params) {
-    const data = await get(endpoints.allFruits);
+  const data = await get(endpoints.allFruits);
 
-    if (data.ok === false) {
-      const error = await data.json();
-      throw json(
-        { message: error.error },
-        { status: error.code }
-      );
-    }
+  if (data.ok === false) {
+    const error = await data.json();
+    throw json({ message: error.error }, { status: error.code });
+  }
 
-    return data;
-  } 
+  return data;
+}
 
 export default AllFruitsPage;
