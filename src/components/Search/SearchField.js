@@ -1,4 +1,4 @@
-
+import classes from "./SearchField.module.css";
 
 function SearchField({ onSearch, searchList }) {
   function onSubmitHandler(event) {
@@ -11,7 +11,6 @@ function SearchField({ onSearch, searchList }) {
 
     const searchQueryResult = searchList.filter((item) => {
       const name = item.name.toLowerCase();
-      console.log(name);
       const query = searchQuery.toLowerCase();
       if (name.includes(query)) {
         return name;
@@ -23,13 +22,13 @@ function SearchField({ onSearch, searchList }) {
   }
 
   return (
-    <form onSubmit={onSubmitHandler}>
-      <input type="search" name="searchQuery" />
-      <button type="submit">Search</button>
+    <form onSubmit={onSubmitHandler} className={classes.form}>
+      <input type="search" name="searchQuery" className={classes.input} />
+      <button type="submit" className={classes["search-btn"]}>
+        Search
+      </button>
     </form>
   );
 }
 
 export default SearchField;
-
-

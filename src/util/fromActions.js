@@ -1,12 +1,17 @@
 import { getUserData } from "./util";
 
+// function that extract and returns 
+
 export async function formActions(request, httpReq, url) {
   const formData = await request.formData();
 
   // extracting data from the Create Form and trimming the date to avoid any unwanted spaces
-  const { name, imageUrl, description, nutrition, price } = Object.fromEntries(
+  const { name, imageUrl, description, price, shipping } = Object.fromEntries(
     [...formData].map(([k, v]) => [k, v.trim()])
   );
+
+  const formatedPrice = Number(price);
+  const freeShipping = shipping.toLowerCase().includes("free") ? true : false;
 
   const userData = getUserData();
   const owner = {
@@ -19,8 +24,8 @@ export async function formActions(request, httpReq, url) {
     name,
     imageUrl,
     description,
-    nutrition,
-    price,
+    price: formatedPrice,
+    freeShipping,
     owner,
   });
 
