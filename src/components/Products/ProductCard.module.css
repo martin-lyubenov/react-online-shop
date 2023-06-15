@@ -4,6 +4,10 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    border-radius: 10px;
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2), 0 3px 3px 0 rgba(0, 0, 0, 0.24);
+    overflow: hidden;
+    background-color: whitesmoke;
 }
 
 .card:hover .button {
@@ -47,10 +51,10 @@
     background-color: black;
     display: block;
     color: white;
-    padding: 15px;
+    padding: 15px 0px;
     margin: 0;
     border: none;
-    width: 90%;
+    width: 100%;
     font-size: 1.1rem;
     text-decoration: none;
     margin: 0 auto;
