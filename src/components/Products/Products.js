@@ -23,7 +23,7 @@ function Products(params) {
 
   function onSearchHandler(searchQueryResult) {
     const tempContent = searchQueryResult.map((product) => (
-      <ProductCard fruit={product} />
+      <ProductCard product={product} />
     ));
     setContent(tempContent);
   }

@@ -9,10 +9,11 @@ function AddProductPage(params) {
 }
 
 export async function action({ request }) {
-  const url = endpoints.allFruits;
+  
+  const url = endpoints.products;
   try {
     await formActions(request, post, url);
-    return redirect("/all-fruits");
+    return redirect("/products");
   } catch (error) {
     throw json({ message: error.error }, { status: error.code });
   }

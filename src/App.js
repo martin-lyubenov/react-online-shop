@@ -38,7 +38,7 @@ const router = createBrowserRouter([
         loader: myProductsLoader,
       },
       {
-        path: "/all-products",
+        path: "/products",
         element: <AllProductsPage />,
         loader: allProductsLoader,
       },

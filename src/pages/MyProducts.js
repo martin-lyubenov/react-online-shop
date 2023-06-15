@@ -9,7 +9,7 @@ function MyProductsPage(params) {
 }
 
 export async function loader(params) {
-  const data = await get(endpoints.allFruits);
+  const data = await get(endpoints.products);
 
   // TODO check if the server can return a sorted response
   // -data-urlencode 'order=likes' \

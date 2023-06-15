@@ -13,7 +13,7 @@ function CreateUpdateForm({ method }) {
             type="text"
             name="name"
             id="name"
-            placeholder="Fruit Name"
+            placeholder="Product Name"
             defaultValue={product ? product.name : ""}
             required
           />
@@ -21,7 +21,7 @@ function CreateUpdateForm({ method }) {
             type="text"
             name="imageUrl"
             id="Fruit-image"
-            placeholder="Fruit Image"
+            placeholder="Product Image"
             defaultValue={product ? product.imageUrl : ""}
             required
           />
@@ -34,6 +34,10 @@ function CreateUpdateForm({ method }) {
             defaultValue={product ? product.price : ""}
             required
           />
+          <select id="shipping" name="shipping">
+            <option value="Free shipping">Free shipping</option>
+            <option value="Paid shipping">Paid shipping</option>
+          </select>
           <textarea
             id="description"
             name="description"
@@ -43,7 +47,7 @@ function CreateUpdateForm({ method }) {
             defaultValue={product ? product.description : ""}
             required
           />
-          <button type="submit">{product ? "Edit" : "Add"} Fruit</button>
+          <button type="submit">{product ? "Edit" : "Add"} Product</button>
         </Form>
       </div>
     </section>

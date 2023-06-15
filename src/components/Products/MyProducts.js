@@ -5,6 +5,7 @@ import classes from "./Products.module.css";
 import { useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 import SearchField from "../Search/SearchField";
+import ProductCard from "./ProductCard";
 
 function MyProducts(params) {
   const data = useLoaderData();
@@ -22,7 +23,7 @@ function MyProducts(params) {
     );
     const tempContent =
       myProducts && myProducts.length > 0 ? (
-        myProducts.map((fruit) => <FruitCard fruit={fruit} />)
+        myProducts.map((product) => <ProductCard product={product} />)
       ) : (
         <p className={classes.heading}>No products yet</p>
       );

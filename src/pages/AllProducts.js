@@ -12,7 +12,7 @@ function AllProductsPage(params) {
 }
 
 export async function loader(params) {
-  const data = await get(endpoints.allFruits);
+  const data = await get(endpoints.products);
 
   if (data.ok === false) {
     const error = await data.json();

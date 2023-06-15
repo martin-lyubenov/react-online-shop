@@ -38,7 +38,7 @@ function MainNav(params) {
             </li>
             <li>
               <NavLink
-                to={"/all-products"}
+                to={"/products"}
                 className={({ isActive }) =>
                   isActive
                     ? `${classes.active} ${classes["nav-link"]}`
@@ -46,7 +46,7 @@ function MainNav(params) {
                 }
                 end
               >
-                All Fruits
+                Products
               </NavLink>
             </li>
             {user && (
@@ -61,7 +61,7 @@ function MainNav(params) {
                     }
                     end
                   >
-                    My Fruits
+                    My Products
                   </NavLink>
                 </li>
                 <li>
@@ -74,7 +74,7 @@ function MainNav(params) {
                     }
                     end
                   >
-                    Add fruit
+                    Add Product
                   </NavLink>
                 </li>
                 <li>
