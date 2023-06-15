@@ -53,7 +53,7 @@ const router = createBrowserRouter([
         action: authAction,
       },
       {
-        path: "/all-fruits/:fruitId",
+        path: "/products/:productId",
         children: [
           {
             index: true,
@@ -61,7 +61,7 @@ const router = createBrowserRouter([
             loader: detailsLoader,
           },
           {
-            path: "/all-fruits/:fruitId/edit",
+            path: "/products/:productId/edit",
             element: <EditPage />,
             loader: editLoader,
             action: editAction,

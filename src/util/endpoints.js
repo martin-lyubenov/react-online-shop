@@ -5,7 +5,7 @@ export const endpoints = {
   register: "/users",
   products: "/classes/Products",
   deleteProduct: "/classes/Products/",
-  byProduct: (productId) => `/classes/Products?${filter("objectId", productId)}`,
+  byProductId: (productId) => `/classes/Products?${filter("objectId", productId)}`,
   createCart: "/classes/Cart",
   byOwnerId: (ownerId) => `/classes/Cart?${filterByOwner(ownerId)}`,
   updateCart: (cartId) => `/classes/Cart/${cartId}`

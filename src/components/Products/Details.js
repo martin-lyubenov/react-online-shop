@@ -8,16 +8,16 @@ import { itemsActions } from "../../store/item";
 
 function Details() {
   const navigate = useNavigate();
-  const fruit = useLoaderData();
+  const product = useLoaderData();
   const user = useSelector((state) => state.user.user);
   if (user) {
-    fruit.isCreator = user.objectId === fruit.owner.objectId;
+    product.isCreator = user.objectId === product.owner.objectId;
   }
 
   const dispatch = useDispatch();
 
   const addToCatHandler = () => {
-    dispatch(itemsActions.addItem(fruit));
+    dispatch(itemsActions.addItem(product));
   };
 
   async function deleteAction() {
@@ -26,35 +26,32 @@ function Details() {
     );
 
     if (choise) {
-      await del(endpoints.deleteFruit + fruit.objectId);
-      navigate("/all-fruits");
+      await del(endpoints.deleteProduct + product.objectId);
+      navigate("/products");
     }
   }
 
   return (
-    <section>
-      <div className={classes["details-wrapper"]}>
-        <img
-          className={classes["details-img"]}
-          src={fruit.imageUrl}
-          alt="example1"
-        />
-        <p className={classes["details-title"]}>{fruit.name}</p>
-        <div className={classes["info-wrapper"]}>
-          <div className={classes["details-description"]}>
-            <p>{fruit.description}</p>
-            <p className={classes["nutrition"]}>{fruit.nutrition}</p>
-            <p className={classes["price"]}>{fruit.price}</p>
-          </div>
-          {user && <button onClick={addToCatHandler}>Add to Cart</button>}
-
-          {fruit.isCreator === true && (
-            <div className={classes["action-buttons"]}>
-              <Link to={`/all-fruits/${fruit.objectId}/edit`}>Edit</Link>
-              <button onClick={deleteAction}>Delete</button>
-            </div>
-          )}
+    <section className={classes["details-wrapper"]}>
+      <img
+        className={classes["details-img"]}
+        src={product.imageUrl}
+        alt={product.name}
+      />
+      <h2 className={classes["details-title"]}>{product.name}</h2>
+      <div className={classes["info-wrapper"]}>
+        <div className={classes["details-description"]}>
+          <p>{product.description}</p>
+          <p className={classes["price"]}>${product.price}</p>
         </div>
+        {user && <button onClick={addToCatHandler} className={classes.button}>Add to Cart</button>}
+
+        {product.isCreator === true && (
+          <div className={classes["action-buttons"]}>
+            <Link to={`/products/${product.objectId}/edit`} className={classes.edit} >Edit</Link>
+            <button onClick={deleteAction} className={classes.danger} >Delete</button>
+          </div>
+        )}
       </div>
     </section>
   );

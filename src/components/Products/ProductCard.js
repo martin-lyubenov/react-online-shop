@@ -17,7 +17,7 @@ function ProductCard({ product }) {
         $<span className={classes["main-price"]}>{mainPrice}</span>.
         {afterDecimal}
       </p>
-      <Link className={classes.button} to={`/all-fruits/${product.objectId}`}>
+      <Link className={classes.button} to={`/products/${product.objectId}`}>
         More Info
       </Link>
     </article>
