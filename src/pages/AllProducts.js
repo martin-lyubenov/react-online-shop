@@ -1,12 +1,12 @@
 import { json } from "react-router-dom";
-import AllFruits from "../components/Fruits/AllFruits";
+import Products from "../components/Products/Products";
 import { get } from "../data/api";
 import { endpoints } from "../util/endpoints";
 
-function AllFruitsPage(params) {
+function AllProductsPage(params) {
   return (
     <>
-      <AllFruits />
+      <Products />
     </>
   );
 }
@@ -22,4 +22,4 @@ export async function loader(params) {
   return data;
 }
 
-export default AllFruitsPage;
+export default AllProductsPage;

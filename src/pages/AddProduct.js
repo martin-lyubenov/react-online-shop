@@ -4,7 +4,7 @@ import { post } from "../data/api";
 import { endpoints } from "../util/endpoints";
 import { formActions } from "../util/fromActions";
 
-function AddFruitPage(params) {
+function AddProductPage(params) {
   return <CreateUpdateForm method={"POST"} />;
 }
 
@@ -18,4 +18,4 @@ export async function action({ request }) {
   }
 }
 
-export default AddFruitPage;
+export default AddProductPage;
