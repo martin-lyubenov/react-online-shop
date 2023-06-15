@@ -1,0 +1,136 @@
+.card {
+    text-align: center;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.card:hover .button {
+    background-color: rgb(234, 191, 0);
+}
+
+.img {
+    width: 100%;
+    object-fit: cover;
+}
+
+.title {
+    padding: 0px 20px;
+    position: relative;
+    font-size: 0.8rem;
+}
+
+.title:before {
+    content: "";
+    width: 20px;
+    height: 2px;
+    background-color: rgb(234, 191, 0);
+    position: absolute;
+    bottom: 0px;
+    left: 50%;
+    margin-left: -10px;
+}
+
+.price {
+    display: block;
+    margin-top: 30px;
+}
+
+.main-price {
+    font-size: 1.4rem;
+    font-weight: bold;
+    margin-left: 5px;
+}
+
+.button {
+    background-color: black;
+    color: white;
+    padding: 15px;
+    margin: 0;
+    border: none;
+    width: 100%;
+    font-size: 1.1rem;
+}
+
+.button:hover {
+    cursor: pointer;
+}
+
+.free-shipping {
+    position: absolute;
+    right: 0;
+    background-color: black;
+    color: white;
+    padding: 5px;
+    font-size: 0.7rem;
+}
+
+@media (min-width: 600px) {
+    .title {
+        font-size: 1rem;
+    }
+}
+
+@media (min-width: 724px) {
+    .title {
+        font-size: 1.2rem;
+    }
+}
+
+
+
+
+/* TODO remove if not needed */
+
+/* .fruit {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  width: 25vw;
+  height: 50vh;
+  padding-bottom: 1rem;
+  margin: 20px auto;
+  background-color: rgb(250, 190, 134);
+  border-radius: 5px;
+  border: 1px solid rgb(245, 90, 90);
+  box-shadow: -4px 3px 25px 1px rgba(0,0,0,0.55);
+-webkit-box-shadow: -4px 3px 25px 1px rgba(0,0,0,0.55);
+-moz-box-shadow: -4px 3px 25px 1px rgba(0,0,0,0.55);
+ 
+} */
+
+/* .fruit img {
+  height:12vw; 
+}
+
+.fruit .title {
+  margin: 0;
+  letter-spacing: 2px;
+  color: rgb(95, 94, 94);
+  text-decoration: underline;
+}
+
+.details-btn {
+  margin-top: 4px;
+  text-decoration: none;
+  font-size: 21px;
+  width: 160px;
+  border-radius: 3px;
+  text-align: center;
+  color: white;
+  background: rgb(240, 156, 47);
+}
+.details-btn:hover {
+  background: #bd2c2c;
+}
+.fruit p {
+  margin: auto;
+  font-size: 0.7rem;
+  font-weight: 500;
+  width: 90%;
+  text-align: center;
+  color: rgb(24, 23, 23);
+  font-family: 'Roboto', sans-serif;
+} */

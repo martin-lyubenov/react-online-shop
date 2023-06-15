@@ -1,20 +1,20 @@
 import { Form, useLoaderData } from "react-router-dom";
-import classes from "./CreateUpdateForm.module.css"
+import classes from "./CreateUpdateForm.module.css";
 
 function CreateUpdateForm({ method }) {
-  const fruit = useLoaderData();
+  const product = useLoaderData();
 
   return (
     <section>
       <div className={classes.form}>
-        <h2>{fruit ? "Edit" : "Add"} Fruit</h2>
+        <h2>{product ? "Edit" : "Add"} product</h2>
         <Form method={method}>
           <input
             type="text"
             name="name"
             id="name"
             placeholder="Fruit Name"
-            defaultValue={fruit ? fruit.name : ""}
+            defaultValue={product ? product.name : ""}
             required
           />
           <input
@@ -22,37 +22,28 @@ function CreateUpdateForm({ method }) {
             name="imageUrl"
             id="Fruit-image"
             placeholder="Fruit Image"
-            defaultValue={fruit ? fruit.imageUrl : ""}
+            defaultValue={product ? product.imageUrl : ""}
             required
           />
-                 <input
+          <input
             type="number"
             step={0.01}
             name="price"
             id="price"
             placeholder="price"
-            defaultValue={fruit ? fruit.imageUrl : ""}
+            defaultValue={product ? product.price : ""}
             required
           />
           <textarea
-            id="fruit-description"
+            id="description"
             name="description"
             placeholder="Description"
             rows="10"
             cols="50"
-            defaultValue={fruit ? fruit.description : ""}
+            defaultValue={product ? product.description : ""}
             required
           />
-          <textarea
-            id="fruit-nutrition"
-            name="nutrition"
-            placeholder="Nutrition"
-            rows="10"
-            cols="50"
-            defaultValue={fruit ? fruit.nutrition : ""}
-            required
-          />
-          <button type="submit">{fruit ? "Edit" : "Add"} Fruit</button>
+          <button type="submit">{product ? "Edit" : "Add"} Fruit</button>
         </Form>
       </div>
     </section>

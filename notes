@@ -1,6 +1,5 @@
-- search? ( maybe by title?, can be in the All products and my products pages)
-
 TODO:
+Choose a new Look for the shop
 Change the whole look tobe for memes
 structure of meme card, info to be send to backend
 Add banner - form me on github ( to be done last)
@@ -9,7 +8,10 @@ make design responsive
 add backdrop to mobile menu and cart?
 testing :(
 Check if error handling can be done in the API file
+Pagination?
 
+
+A PUT request is send every time the cart is opened or closed ( as it is rerendered) - can be fixed by hidding it instead instead ( but it will be part of the DOM), is it worth it to do so? The cart is open and closed rather seldom so for now it will remain the way it is. 
 
 
 New theme:

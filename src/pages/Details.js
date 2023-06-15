@@ -1,4 +1,4 @@
-import Details from "../components/Fruits/Details";
+import Details from "../components/Products/Details";
 import { get } from "../data/api";
 import { endpoints } from "../util/endpoints";
 

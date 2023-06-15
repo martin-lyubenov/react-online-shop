@@ -1,0 +1,31 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
+
+.container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 25px;
+}
+
+.heading-main {
+    font-weight: unset;
+}
+
+.heading {
+    text-align: center;
+    font-size: 50px;
+    color: rgb(241, 133, 10);
+
+}
+
+@media (min-width: 768px) {
+    .container {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media (min-width: 1014px) {
+    .container {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}

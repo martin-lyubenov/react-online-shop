@@ -38,7 +38,7 @@ function MainNav(params) {
             </li>
             <li>
               <NavLink
-                to={"/all-fruits"}
+                to={"/all-products"}
                 className={({ isActive }) =>
                   isActive
                     ? `${classes.active} ${classes["nav-link"]}`
@@ -53,7 +53,7 @@ function MainNav(params) {
               <>
                 <li>
                   <NavLink
-                    to={"/my-fruits"}
+                    to={"/my-products"}
                     className={({ isActive }) =>
                       isActive
                         ? `${classes.active} ${classes["nav-link"]}`
@@ -66,7 +66,7 @@ function MainNav(params) {
                 </li>
                 <li>
                   <NavLink
-                    to={"/add-fruit"}
+                    to={"/add-product"}
                     className={({ isActive }) =>
                       isActive
                         ? `${classes.active} ${classes["nav-link"]}`
@@ -101,7 +101,7 @@ function MainNav(params) {
             )}
             {user && (
               <li>
-                <p className={classes["nav-link"]}>Welcome {user.email}</p>
+                <p className={classes["nav-link"]}>Signed in as {user.email}</p>
               </li>
             )}
           </ul>

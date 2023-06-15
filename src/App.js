@@ -3,11 +3,8 @@ import "./App.css";
 import Layout from "./pages/Layout";
 import ErrorPage from "./pages/Error";
 import WelcomePage from "./pages/Welcome";
-import MyFruitsPage, { loader as myFruitsLoader } from "./pages/MyFruits";
 import AuthPage, { action as authAction } from "./pages/Authentication";
 import { getUserData } from "./util/util";
-import AddFruitPage, { action as addFruitAction } from "./pages/AddFruit";
-import AllFruitsPage, { loader as allFruitsLoader } from "./pages/AllFruits";
 import DetailsPage, { loader as detailsLoader } from "./pages/Details";
 import EditPage, {
   loader as editLoader,
@@ -16,6 +13,11 @@ import EditPage, {
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { fetchCart, itemsActions, sendCartData } from "./store/item";
+import MyProductsPage, { loader as myProductsLoader } from "./pages/MyProducts";
+import AllProductsPage, {
+  loader as allProductsLoader,
+} from "./pages/AllProducts";
+import AddProductPage, { action as addProductAction } from "./pages/AddProduct";
 // import SearchLayoutPage, { action as actionSearch } from "./pages/SearchLayout";
 
 const router = createBrowserRouter([
@@ -31,19 +33,19 @@ const router = createBrowserRouter([
         element: <WelcomePage />,
       },
       {
-        path: "/my-fruits",
-        element: <MyFruitsPage />,
-        loader: myFruitsLoader,
+        path: "/my-products",
+        element: <MyProductsPage />,
+        loader: myProductsLoader,
       },
       {
-        path: "/all-fruits",
-        element: <AllFruitsPage />,
-        loader: allFruitsLoader,
+        path: "/all-products",
+        element: <AllProductsPage />,
+        loader: allProductsLoader,
       },
       {
-        path: "/add-fruit",
-        element: <AddFruitPage />,
-        action: addFruitAction,
+        path: "/add-product",
+        element: <AddProductPage />,
+        action: addProductAction,
       },
       {
         path: "/auth",
