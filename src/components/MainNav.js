@@ -3,29 +3,45 @@ import { NavLink, useNavigate } from "react-router-dom";
 import classes from "./MainNav.module.css";
 import Cart from "./Cart/Cart";
 import CartVisibilityButton from "./Cart/CartVisibilityButton";
-import { useSelector } from "react-redux";
-import store from "../store";
+import { useDispatch, useSelector } from "react-redux";
 import { userActions } from "../store/user";
+import MobileMenuBtn from "../UI/MobileMenuBtn";
+import { toggleVisibilityActions } from "../store/toggleVisibility";
 
 function MainNav(params) {
-  const user = useSelector(state => state.user.user)
+  const dispatch = useDispatch();
+  const user = useSelector((state) => state.user.user);
   const navigate = useNavigate();
-  const isShown = useSelector((state) => state.cartToggle.isShown);
 
-  async function logout() {
-    store.dispatch(userActions.clearUserData())
+  const visibility = useSelector((state) => state.toggleVisibility);
+  const cartIsVisible = visibility.cartIsVisible;
+  const mobileMenuIsVisible = visibility.mobileMenuIsVisible;
+
+  let navigationClasses = `${classes["nav-list"]} ${classes.close}`;
+
+  if (mobileMenuIsVisible) {
+    navigationClasses = `${classes["nav-list"]} ${classes.open}`;
+  }
+
+  function closeMobileMenu(params) {
+    dispatch(toggleVisibilityActions.toggleMobileMenuVisibility());
+  }
+
+  function logout() {
+    dispatch(userActions.clearUserData());
     return navigate("/");
   }
 
   return (
     <>
-      {" "}
+      <MobileMenuBtn />
       <header className={classes.header}>
-        <nav>
-          <ul className={classes["nav-list"]}>
+        <nav className={classes.nav}>
+          <ul className={navigationClasses}>
             <li>
               <NavLink
-                to={"/"}
+                onClick={closeMobileMenu}
+                to="/"
                 className={({ isActive }) =>
                   isActive
                     ? `${classes.active} ${classes["nav-link"]}`
@@ -38,7 +54,8 @@ function MainNav(params) {
             </li>
             <li>
               <NavLink
-                to={"/products"}
+                onClick={closeMobileMenu}
+                to="/products"
                 className={({ isActive }) =>
                   isActive
                     ? `${classes.active} ${classes["nav-link"]}`
@@ -53,7 +70,8 @@ function MainNav(params) {
               <>
                 <li>
                   <NavLink
-                    to={"/my-products"}
+                    onClick={closeMobileMenu}
+                    to="/my-products"
                     className={({ isActive }) =>
                       isActive
                         ? `${classes.active} ${classes["nav-link"]}`
@@ -66,7 +84,8 @@ function MainNav(params) {
                 </li>
                 <li>
                   <NavLink
-                    to={"/add-product"}
+                    onClick={closeMobileMenu}
+                    to="/add-product"
                     className={({ isActive }) =>
                       isActive
                         ? `${classes.active} ${classes["nav-link"]}`
@@ -88,7 +107,8 @@ function MainNav(params) {
             {!user && (
               <li>
                 <NavLink
-                  to={"/auth?mode=login"}
+                  onClick={closeMobileMenu}
+                  to="/auth?mode=login"
                   className={({ isActive }) =>
                     isActive
                       ? `${classes.active} ${classes["nav-link"]}`
@@ -99,18 +119,19 @@ function MainNav(params) {
                 </NavLink>
               </li>
             )}
-            {user && (
-              <li>
-                <p className={classes["nav-link"]}>Signed in as {user.email}</p>
-              </li>
-            )}
           </ul>
         </nav>
+
+        <p className={`${classes["nav-link"]} ${classes.welcome}`}>
+          Welcome {user ? user.email : "valued customer"}{" "}
+        </p>
       </header>
-      <CartVisibilityButton isShown={isShown} />
-      {isShown && <Cart />}
+      <CartVisibilityButton />
+      {cartIsVisible && <Cart />}
     </>
   );
 }
 
 export default MainNav;
+
+// TODO remove welcome message in small screen? or at all
