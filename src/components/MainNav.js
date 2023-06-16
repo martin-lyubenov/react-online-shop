@@ -122,7 +122,7 @@ function MainNav(params) {
           </ul>
         </nav>
 
-        <p className={`${classes["nav-link"]} ${classes.welcome}`}>
+        <p className={classes.welcome}>
           Welcome {user ? user.email : "valued customer"}{" "}
         </p>
       </header>
