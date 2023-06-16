@@ -1,4 +1,3 @@
-import { useLoaderData } from "react-router-dom";
 import FruitCard from "./ProductCard";
 
 import classes from "./Products.module.css";
@@ -7,11 +6,9 @@ import { useEffect, useState } from "react";
 import SearchField from "../Search/SearchField";
 import ProductCard from "./ProductCard";
 
-function MyProducts(params) {
-  const data = useLoaderData();
+function MyProducts({ products }) {
   const [content, setContent] = useState();
   const user = useSelector((state) => state.user.user);
-  const products = data.results;
   const ownerId = user.objectId;
   const searchList = products.filter(
     (fruit) => fruit.owner.objectId === ownerId
@@ -41,7 +38,6 @@ function MyProducts(params) {
   return (
     <section>
       <SearchField onSearch={onSearchHandler} searchList={searchList} />
-      <h1 className={classes["heading-main"]}>My Products</h1>
       <div className={classes.container}>{content}</div>
     </section>
   );

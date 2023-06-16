@@ -1,13 +1,9 @@
-import { useLoaderData } from "react-router-dom";
-
 import classes from "./Products.module.css";
 import SearchField from "../Search/SearchField";
 import { useEffect, useState } from "react";
 import ProductCard from "./ProductCard";
 
-function Products(params) {
-  const data = useLoaderData();
-  const products = data.results;
+function Products({products}) {
   const [content, setContent] = useState();
 
   useEffect(() => {
@@ -31,7 +27,6 @@ function Products(params) {
   return (
     <section>
       <SearchField onSearch={onSearchHandler} searchList={products} />
-      <h1 className={classes["heading-main"]}>All Products</h1>
       <div className={classes.container}>{content}</div>
     </section>
   );

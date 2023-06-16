@@ -1,17 +1,28 @@
-import { json } from "react-router-dom";
+import { Await, defer, json, useLoaderData } from "react-router-dom";
 import Products from "../components/Products/Products";
 import { get } from "../data/api";
 import { endpoints } from "../util/endpoints";
+import { Suspense } from "react";
+import Fallback from "../UI/Fallback";
+
+import classes from "./AllProducts.module.css";
 
 function AllProductsPage(params) {
+  const { data } = useLoaderData();
+
   return (
     <>
-      <Products />
+      <h1 className={classes["heading-main"]}>All Products</h1>
+      <Suspense fallback={<Fallback />}>
+        <Await resolve={data}>
+          {(data) => <Products products={data.results} />}
+        </Await>
+      </Suspense>
     </>
   );
 }
 
-export async function loader(params) {
+async function getProducts(params) {
   const data = await get(endpoints.products);
 
   if (data.ok === false) {
@@ -19,7 +30,15 @@ export async function loader(params) {
     throw json({ message: error.error }, { status: error.code });
   }
 
-  return data;
+  const result = data.json();
+
+  return result;
+}
+
+export function loader(params) {
+  return defer({
+    data: getProducts(),
+  });
 }
 
 export default AllProductsPage;
