@@ -1,8 +1,22 @@
-import { Form, useLoaderData } from "react-router-dom";
+import {
+  Form,
+  useLoaderData,
+  useNavigate,
+  useNavigation,
+} from "react-router-dom";
 import classes from "./CreateUpdateForm.module.css";
 
 function CreateUpdateForm({ method }) {
   const product = useLoaderData();
+  const navigate = useNavigate();
+
+  const navigation = useNavigation();
+
+  const isSubmitting = navigation.state === "submitting";
+
+  function onCancelHandler(params) {
+    navigate("..");
+  }
 
   return (
     <section>
@@ -47,7 +61,19 @@ function CreateUpdateForm({ method }) {
             defaultValue={product ? product.description : ""}
             required
           />
-          <button type="submit">{product ? "Edit" : "Add"} Product</button>
+          <button disabled={isSubmitting} type="submit">
+            {" "}
+            {isSubmitting
+              ? "Processing"
+              : product
+              ? "Edit Product"
+              : "Add Product"}
+          </button>
+          {product && (
+            <button onClick={onCancelHandler} type="button">
+              Cancel
+            </button>
+          )}
         </Form>
       </div>
     </section>
