@@ -38,7 +38,7 @@ const router = createBrowserRouter([
         loader: myProductsLoader,
       },
       {
-        path: "/products",
+        path: "/react-online-shop/products",
         element: <AllProductsPage />,
         loader: allProductsLoader,
       },
