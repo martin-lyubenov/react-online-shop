@@ -34,7 +34,7 @@ function MainNav(params) {
 
   return (
     <>
-      <MobileMenuBtn />
+      <MobileMenuBtn  />
       <header className={classes.header}>
         <nav className={classes.nav}>
           <ul className={navigationClasses}>
