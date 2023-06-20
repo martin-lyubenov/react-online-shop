@@ -34,7 +34,7 @@ function MainNav(params) {
 
   return (
     <>
-      <MobileMenuBtn  />
+      <MobileMenuBtn />
       <header className={classes.header}>
         <nav className={classes.nav}>
           <ul className={navigationClasses}>
@@ -55,7 +55,7 @@ function MainNav(params) {
             <li>
               <NavLink
                 onClick={closeMobileMenu}
-                to="/products"
+                to="/react-online-shop/products"
                 className={({ isActive }) =>
                   isActive
                     ? `${classes.active} ${classes["nav-link"]}`
@@ -127,7 +127,7 @@ function MainNav(params) {
         </p>
       </header>
       <CartVisibilityButton />
-      {cartIsVisible && <Cart />}
+      <Cart cartIsVisible={cartIsVisible} />
     </>
   );
 }
