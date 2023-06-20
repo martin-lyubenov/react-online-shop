@@ -21,7 +21,7 @@ function CreateUpdateForm({ method }) {
   return (
     <section>
       <div className={classes.form}>
-        <h2>{product ? "Edit" : "Add"} product</h2>
+        <h2 className={classes.heading}>{product ? "Edit" : "Add"} product</h2>
         <Form method={method}>
           <input
             type="text"
@@ -29,6 +29,7 @@ function CreateUpdateForm({ method }) {
             id="name"
             placeholder="Product Name"
             defaultValue={product ? product.name : ""}
+            className={classes.input}
             required
           />
           <input
@@ -37,6 +38,7 @@ function CreateUpdateForm({ method }) {
             id="Fruit-image"
             placeholder="Product Image"
             defaultValue={product ? product.imageUrl : ""}
+            className={classes.input}
             required
           />
           <input
@@ -46,9 +48,10 @@ function CreateUpdateForm({ method }) {
             id="price"
             placeholder="price"
             defaultValue={product ? product.price : ""}
+            className={classes.input}
             required
           />
-          <select id="shipping" name="shipping">
+          <select id="shipping" name="shipping" className={classes.input}>
             <option value="Free shipping">Free shipping</option>
             <option value="Paid shipping">Paid shipping</option>
           </select>
@@ -59,9 +62,10 @@ function CreateUpdateForm({ method }) {
             rows="10"
             cols="50"
             defaultValue={product ? product.description : ""}
+            className={classes.textarea}
             required
           />
-          <button disabled={isSubmitting} type="submit">
+          <button disabled={isSubmitting} type="submit" className={classes.btn}>
             {" "}
             {isSubmitting
               ? "Processing"

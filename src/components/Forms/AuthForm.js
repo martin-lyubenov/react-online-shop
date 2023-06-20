@@ -23,7 +23,7 @@ function AuthForm(params) {
   return (
     <section>
       <div className={classes.form}>
-        <h2>{isLogin ? "Login" : "Register"}</h2>
+        <h2 className={classes.heading}>{isLogin ? "Login" : "Register"}</h2>
         {data !== undefined && data.passwordsMatch === false && (
           <p>Passwords do not match</p>
         )}

@@ -1,0 +1,90 @@
+.welcome-content {
+  display: flex;
+  justify-content: flex-start;
+  background: url(/src/assets/images/welcome/pexels-photo-5794559.webp);
+  background-repeat: no-repeat;
+  height: 480px;
+  border-radius: 50%/ 0 0 40px 40px;
+  background-color: whitesmoke;
+}
+
+.welcome-content-box {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 15px;
+  margin: 0 auto;
+  color: white;
+}
+
+.main-heading {
+  text-transform: uppercase;
+  font-size: 1.3rem;
+  margin: 0px;
+  font-weight: bold;
+}
+
+.btn {
+  background-color: black;
+  display: block;
+  color: white;
+  padding: 10px 15px;
+  margin: 0;
+  border: none;
+  width: 60%;
+  font-size: 1.1rem;
+  text-decoration: none;
+  text-align: center;
+}
+
+.btn:hover {
+  cursor: pointer;
+  background-color: rgb(234, 191, 0);
+}
+
+
+.secondary-heading {
+  position: relative;
+  text-align: center;
+  font-size: 1rem;
+}
+
+.secondary-heading:before {
+  content: "";
+  width: 200px;
+  height: 4px;
+  background-color: rgb(234, 191, 0);
+  position: absolute;
+  bottom: -20px;
+  margin-left: -10px;
+}
+
+
+@media (min-width: 600px) {
+
+  .welcome-content {
+    background-repeat: repeat;
+    background-size: 100%;
+  }
+
+}
+
+
+@media (min-width: 768px) {
+
+  .main-heading {
+    font-size: 1.7rem;
+  }
+
+  .secondary-heading {
+    font-size: 1.3rem;
+  }
+
+}
+
+@media (min-width: 1024px) {
+  .secondary-heading {
+    font-size: 1.7rem;
+  }
+}

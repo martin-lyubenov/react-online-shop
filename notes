@@ -1,9 +1,10 @@
 TODO:
-testing :(
-Check if error handling can be done in the API file
+Animate shopping cart
+Check if error handling can be done in the API file - maybe by using just throw in the catch blow?
 Cart should look way better
 Add spinners to cart? 
 Add banner - form me on github ( to be done last)
+testing :(
 Pagination?
 
 
