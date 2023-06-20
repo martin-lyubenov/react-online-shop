@@ -1,12 +1,17 @@
 import { useSelector } from "react-redux";
 import classes from "./Cart.module.css";
 import CartItem from "./CartItem";
+import { CSSTransition } from "react-transition-group";
 
-const Cart = (props) => {
+const animationTiming = {
+  enter: 400,
+  exit: 400
+}
+
+const Cart = ({cartIsVisible}) => {
   const items = useSelector((state) => state.items);
   const processedPrice = Math.abs(items.totalCost).toFixed(2);
   const totalQty = items.totalQuantity;
-
 
   let content = <p>No items</p>;
 
@@ -19,15 +24,27 @@ const Cart = (props) => {
       </ul>
     );
   }
-  
 
   return (
-    <div className={classes.cart}>
-      <h2>Your Shopping Cart</h2>
-      {content}
-      <p>Total price: {processedPrice}</p>
-      <p>Total qty: {totalQty}</p>
-    </div>
+    <CSSTransition
+    mountOnEnter
+    unmountOnExit
+    in={cartIsVisible}
+    timeout={animationTiming}
+    classNames={{
+      enter: '',
+      enterActive: classes.cartIsOpen,
+      exit: '',
+      exitActive: classes.cartIsClosed
+    }}
+    >
+      <div className={classes.cart}>
+        <h2>Your Shopping Cart</h2>
+        {content}
+        <p>Total price: {processedPrice}</p>
+        <p>Total qty: {totalQty}</p>
+      </div>
+    </CSSTransition>
   );
 };
 

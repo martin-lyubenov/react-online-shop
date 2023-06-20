@@ -25,27 +25,30 @@ function AuthForm(params) {
       <div className={classes.form}>
         <h2 className={classes.heading}>{isLogin ? "Login" : "Register"}</h2>
         {data !== undefined && data.passwordsMatch === false && (
-          <p>Passwords do not match</p>
+          <p className={classes.error} >Passwords do not match</p>
         )}
         {data !== undefined && data.passUserMatch === false && (
-          <p>Password or username do not match</p>
+          <p className={classes.error} >Password or Username do not match</p>
         )}
         <Form method="post">
-          <input type="text" name="email" placeholder="email" required />
+          <input type="text" name="email" placeholder="email" className={classes.input} required />
           <input
             type="password"
             name="password"
             placeholder="password"
+            className={classes.input}
             required
           />
           {!isLogin && (
             <input
               type="password"
               name="rePassword"
+              className={classes.input}
               placeholder="repeat password"
+              required
             />
           )}
-          <button type="submit">{isLogin ? "Login" : "Register"}</button>
+          <button type="submit" className={classes.btn}>{isLogin ? "Login" : "Register"}</button>
           {message}
         </Form>
       </div>

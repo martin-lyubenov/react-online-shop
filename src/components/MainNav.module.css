@@ -46,6 +46,7 @@
     color: white;
     font-weight: bold;
     margin: 0;
+    padding-right: 10px;
     font-size: 0.5rem;
 }
 
@@ -121,7 +122,8 @@
         padding: 25px 25px;
     }
 
-    .nav-link, .welcome {
+    .nav-link,
+    .welcome {
         font-size: 1.1rem;
     }
 

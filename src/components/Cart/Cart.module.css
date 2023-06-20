@@ -26,17 +26,52 @@
 }
 
 
+.cartIsOpen {
+  animation: openCart 0.4s ease-out forwards;
+}
+
+.cartIsClosed {
+  animation: closeCart 0.4s ease-out forwards;
+
+}
+
+
+@keyframes openCart {
+  0% {
+    opacity: 0;
+    transform: translateX(100%);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateX(0%);
+  }
+}
+
+@keyframes closeCart {
+  0% {
+    opacity: 1;
+    transform: translateX(0%);
+  }
+
+  100% {
+    opacity: 0;
+    transform: translateX(100%);
+  }
+}
+
+
 @media (min-width: 768px) {
   .cart {
-      width: 50%;
+    width: 50%;
   }
 
 }
 
 @media (min-width: 1024px) {
   .cart {
-      width: 30%;
-      height: 100%;
+    width: 30%;
+    height: 100%;
   }
 
 }
