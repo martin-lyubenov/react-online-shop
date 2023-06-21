@@ -64,3 +64,20 @@
     cursor: pointer;
     background-color: rgb(189, 169, 79);
 }
+
+.danger-btn{
+    padding: 10px 30px;
+    background-color: blue;
+    border-radius: 10px;
+    margin-top: 25px;
+    border: none;
+    text-transform: uppercase;
+    color: white;
+}
+
+.danger-btn:hover,
+.danger-btn:active,
+.danger-btn:focus {
+    cursor: pointer;
+    background-color: red;
+}

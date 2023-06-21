@@ -33,26 +33,39 @@ function Details() {
 
   return (
     <section className={classes["details-wrapper"]}>
-      <img
-        className={classes["details-img"]}
-        src={product.imageUrl}
-        alt={product.name}
-      />
-      <h2 className={classes["details-title"]}>{product.name}</h2>
-      <div className={classes["info-wrapper"]}>
-        <div className={classes["details-description"]}>
-          <p>{product.description}</p>
-          <p className={classes["price"]}>${product.price}</p>
-        </div>
-        {user && <button onClick={addToCatHandler} className={classes.button}>Add to Cart</button>}
-
-        {product.isCreator === true && (
-          <div className={classes["action-buttons"]}>
-            <Link to={`/products/${product.objectId}/edit`} className={classes.edit} >Edit</Link>
-            <button onClick={deleteAction} className={classes.danger} >Delete</button>
+      <div className={classes.card}>
+        <img
+          className={classes["details-img"]}
+          src={product.imageUrl}
+          alt={product.name}
+        />
+        <h2 className={classes["details-title"]}>{product.name}</h2>
+        <div className={classes["info-wrapper"]}>
+          <div className={classes["details-description"]}>
+            <p>{product.description}</p>
+            <p className={classes["price"]}>${product.price}</p>
           </div>
-        )}
+        </div>
       </div>
+      {user && (
+        <button onClick={addToCatHandler} className={classes.button}>
+          Add to Cart
+        </button>
+      )}
+
+      {product.isCreator === true && (
+        <div className={classes["action-buttons"]}>
+          <Link
+            to={`/products/${product.objectId}/edit`}
+            className={classes.edit}
+          >
+            Edit
+          </Link>
+          <button onClick={deleteAction} className={classes.danger}>
+            Delete
+          </button>
+        </div>
+      )}
     </section>
   );
 }

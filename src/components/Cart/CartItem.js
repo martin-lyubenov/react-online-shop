@@ -17,19 +17,19 @@ const CartItem = ({ item }) => {
 
   return (
     <li className={classes.item}>
-      <header>
-        <h3>{name}</h3>
+      <header className={classes.header}>
+        <h3 className={classes.heading}>{name}</h3>
         <div className={classes.price}>
-          <span className={classes.itemprice}>{processedPrice}/item</span>
+          <span className={classes.itemprice}>${processedPrice}/item</span>
         </div>
       </header>
       <div className={classes.details}>
         <div className={classes.quantity}>
-          x <span>{qty}</span>
+          x <span className={classes['span-quantity']}>{qty}</span>
         </div>
         <div className={classes.actions}>
-          <button onClick={decreaseHandler}>-</button>
-          <button onClick={increaseHandler}>+</button>
+          <button onClick={decreaseHandler} className={classes['btn-action']}>-</button>
+          <button onClick={increaseHandler} className={classes['btn-action']}>+</button>
         </div>
       </div>
     </li>

@@ -5,10 +5,10 @@ import { CSSTransition } from "react-transition-group";
 
 const animationTiming = {
   enter: 400,
-  exit: 400
-}
+  exit: 400,
+};
 
-const Cart = ({cartIsVisible}) => {
+const Cart = ({ cartIsVisible }) => {
   const items = useSelector((state) => state.items);
   const processedPrice = Math.abs(items.totalCost).toFixed(2);
   const totalQty = items.totalQuantity;
@@ -17,7 +17,7 @@ const Cart = ({cartIsVisible}) => {
 
   if (items.items.length > 0) {
     content = (
-      <ul>
+      <ul className={classes["item-list"]}>
         {items.items.map((item) => (
           <CartItem key={item.objectId} item={item} />
         ))}
@@ -27,22 +27,24 @@ const Cart = ({cartIsVisible}) => {
 
   return (
     <CSSTransition
-    mountOnEnter
-    unmountOnExit
-    in={cartIsVisible}
-    timeout={animationTiming}
-    classNames={{
-      enter: '',
-      enterActive: classes.cartIsOpen,
-      exit: '',
-      exitActive: classes.cartIsClosed
-    }}
+      mountOnEnter
+      unmountOnExit
+      in={cartIsVisible}
+      timeout={animationTiming}
+      classNames={{
+        enter: "",
+        enterActive: classes.cartIsOpen,
+        exit: "",
+        exitActive: classes.cartIsClosed,
+      }}
     >
       <div className={classes.cart}>
-        <h2>Your Shopping Cart</h2>
+        <h2 className={classes.heading}>Your Shopping Cart</h2>
         {content}
-        <p>Total price: {processedPrice}</p>
-        <p>Total qty: {totalQty}</p>
+        <div className={classes['total-details']}>
+          <p className={classes.price}>Total price: ${processedPrice}</p>
+          <p className={classes.quantity}>Total qty: {totalQty}</p>
+        </div>
       </div>
     </CSSTransition>
   );

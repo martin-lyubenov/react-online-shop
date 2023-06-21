@@ -74,7 +74,11 @@ function CreateUpdateForm({ method }) {
               : "Add Product"}
           </button>
           {product && (
-            <button onClick={onCancelHandler} type="button">
+            <button
+              onClick={onCancelHandler}
+              type="button"
+              className={classes["danger-btn"]}
+            >
               Cancel
             </button>
           )}

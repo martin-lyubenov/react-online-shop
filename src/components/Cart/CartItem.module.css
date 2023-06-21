@@ -1,15 +1,16 @@
 .item {
   margin: 1rem 0;
-  background-color: #575757;
+  background-color: whitesmoke;
   padding: 1rem;
+  color: black;
+  padding: 0px 10px;
 }
 
-.item h3 {
-  margin: 0 0 0.5rem 0;
-  font-size: 1.75rem;
+.heading {
+  font-size: 1rem;
 }
 
-.item header {
+.header {
   display: flex;
   justify-content: space-between;
   align-items: baseline;
@@ -21,13 +22,13 @@
   align-items: center;
 }
 
-.quantity span {
-  font-size: 1.5rem;
+.span-quantity {
+  font-size: 1rem;
   font-weight: bold;
 }
 
 .price {
-  font-size: 1.5rem;
+  font-size: 1rem;
   font-weight: bold;
 }
 
@@ -43,16 +44,18 @@
   margin: 0.5rem 0;
 }
 
-.actions button {
-  background-color: transparent;
+.btn-action {
+  background-color: black;
   border: 1px solid white;
   margin-left: 0.5rem;
   padding: 0.15rem 1rem;
   color: white;
 }
 
-.actions button:hover,
-.actions button:active {
+.btn-action:hover,
+.btn-action:active {
+  cursor: pointer;
   background-color: #4b4b4b;
   color: white;
 }
+
