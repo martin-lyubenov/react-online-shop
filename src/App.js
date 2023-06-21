@@ -1,4 +1,4 @@
-import { RouterProvider, createBrowserRouter } from "react-router-dom";
+import { RouterProvider, createHashRouter } from "react-router-dom";
 import "./App.css";
 import Layout from "./pages/Layout";
 import ErrorPage from "./pages/Error";
@@ -20,7 +20,10 @@ import AllProductsPage, {
 import AddProductPage, { action as addProductAction } from "./pages/AddProduct";
 // import SearchLayoutPage, { action as actionSearch } from "./pages/SearchLayout";
 
-const router = createBrowserRouter([
+
+
+// createBrowserRouter does not work very well wit gh-pages, hash router used instead
+const router = createHashRouter([
   {
     path: "/",
     element: <Layout />,
@@ -38,7 +41,7 @@ const router = createBrowserRouter([
         loader: myProductsLoader,
       },
       {
-        path: "/react-online-shop/products",
+        path: "/products",
         element: <AllProductsPage />,
         loader: allProductsLoader,
       },

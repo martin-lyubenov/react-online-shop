@@ -55,7 +55,7 @@ function MainNav(params) {
             <li>
               <NavLink
                 onClick={closeMobileMenu}
-                to="/react-online-shop/products"
+                to="/products"
                 className={({ isActive }) =>
                   isActive
                     ? `${classes.active} ${classes["nav-link"]}`
@@ -115,7 +115,7 @@ function MainNav(params) {
                       : classes["nav-link"]
                   }
                 >
-                  Authentication
+                  Login
                 </NavLink>
               </li>
             )}
