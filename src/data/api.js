@@ -26,8 +26,6 @@ async function request(method, url, data) {
     options.headers["X-Parse-Session-Token"] = token;
   }
 
-
-
   const response = await fetch(host + url, options);
   
   return response;

@@ -1,15 +1,8 @@
 TODO:
-Animate shopping cart
-Check if error handling can be done in the API file - maybe by using just throw in the catch blow?
-Cart should look way better
-Add spinners to cart? 
-Add banner - form me on github ( to be done last)
-testing :(
+Expand the details page
+Add banner - fork me on github ( to be done last)
+Check all of the TODOs
 Pagination?
 
 
 A PUT request is send every time the cart is opened or closed ( as it is rerendered) - can be fixed by hidding it instead instead ( but it will be part of the DOM), is it worth it to do so? The cart is open and closed rather seldom so for now it will remain the way it is. 
-
-App deplyoed on github Pages but as it has a router I cannot use it?
-Checking for solutions 
-first is to add   "private": false, in the package-lock.json file - have to remove the old build file and build the new
