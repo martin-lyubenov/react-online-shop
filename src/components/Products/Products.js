@@ -4,8 +4,10 @@ import { useEffect, useState } from "react";
 import ProductCard from "./ProductCard";
 
 function Products({products}) {
+  // traks if you are looking at the regular or searched list of products
   const [content, setContent] = useState();
 
+  // loads products at loading the component
   useEffect(() => {
     const tempContent =
       products && products.length > 0 ? (

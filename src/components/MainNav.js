@@ -133,5 +133,3 @@ function MainNav(params) {
 }
 
 export default MainNav;
-
-// TODO remove welcome message in small screen? or at all

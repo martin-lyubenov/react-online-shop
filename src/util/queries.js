@@ -1,4 +1,4 @@
-// Query for getting a fruit by ID
+// Query for getting a product by ID
 export function filter(fieldName, value) {
     const query = JSON.stringify({[fieldName]: value});
 
