@@ -1,8 +1,2 @@
 TODO:
-
-Expand the details page
-Check all of the TODOs
-Pagination?
-
-
-A PUT request is send every time the cart is opened or closed ( as it is rerendered) - can be fixed by hidding it instead instead ( but it will be part of the DOM), is it worth it to do so? The cart is open and closed rather seldom so for now it will remain the way it is. 
+Stripe? 
