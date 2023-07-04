@@ -22,12 +22,24 @@ export async function action({ request, params }) {
 export async function loader({ params }) {
   const productId = params.productId;
 
-  const response = await get(endpoints.byProductId(productId));
+  // TODO add check for bad requests
 
-  const data = await response.json();
-  const product = data.results[0];
+  try {
+    const response = await get(endpoints.byProductId(productId));
 
-  return product;
+    if (response.ok === false) {
+      const error = await response.json();
+      throw json({ message: error.error }, { status: error.code });
+    }
+
+    const data = await response.json();
+
+    const product = data.results[0];
+
+    return product;
+  } catch (error) {
+    throw json({ message: error.error }, { status: error.code });
+  }
 }
 
 export default EditPage;
