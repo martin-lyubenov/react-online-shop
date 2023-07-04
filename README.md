@@ -1,3 +1,6 @@
+
+![react-online-shop](https://github.com/martin-lyubenov/react-online-shop/assets/52383146/482ad5c8-cf9d-4220-aab0-15ec8d79f28a)
+
 Hello, 
 
 I am working on creating a simple online shop with React, React-Redux and React-Router.
@@ -13,6 +16,3 @@ Things to be included:
 - Adding products - done
 - loading spinners - done
 - Stripe payment example
-
-If you like to contribute feel free to fork the project. 
-
