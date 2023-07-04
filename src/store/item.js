@@ -54,8 +54,6 @@ const itemsSlice = createSlice({
       state.totalQuantity--;
       state.totalCost -= Number(action.payload.price);
 
-      // TODO total cost can be negative??
-
       const index = state.items.findIndex(
         (item) => item.objectId === action.payload.objectId
       );
@@ -66,7 +64,17 @@ const itemsSlice = createSlice({
       } else {
         existingItem.qty--;
       }
+
+      // adding and subtracting items with decial value can cause a rounding error, this line of codes makes sure that if all items have been remove the price is reset
+      if (state.items.length === 0) {
+        state.totalCost = 0;
+      }
     },
+
+    clearCart(state) {
+      state.totalCost = 0;
+      state.items = [];
+    }
   },
 });
 
